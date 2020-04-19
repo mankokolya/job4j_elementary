@@ -8,6 +8,6 @@ public class TrgArea {
 
     public static void main(String[] args) {
         double trgArea = TrgArea.area(2,2,2);
-        System.out.println("The area of hte triangle with sides (2, 2, 2) is " + trgArea);
+        System.out.println("The area of the triangle with sides (2, 2, 2) is " + trgArea);
     }
 }
