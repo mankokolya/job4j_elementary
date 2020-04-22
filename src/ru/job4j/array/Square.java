@@ -18,11 +18,4 @@ public class Square {
         }
         return squaredNumbers;
     }
-
-    public static void main(String[] args) {
-        int[] squaredNumbers = Square.numbersToSquare(4);
-        for (int number: squaredNumbers) {
-            System.out.println(number);
-        }
-    }
 }
