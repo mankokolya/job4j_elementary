@@ -42,6 +42,7 @@ public class MatrixCheck {
 
     /**
      * This method is used to extract chars from matrix diagonal and save them in the array;
+     *
      * @param board - provided matrix;
      * @return - array with chars from diagonal;
      */
@@ -49,6 +50,19 @@ public class MatrixCheck {
         char[] result = new char[board.length];
         for (int i = 0; i < board.length; i++) {
             result[i] = board[i][i];
+        }
+        return result;
+    }
+
+    public static boolean isWin(char[][] board) {
+        boolean result = false;
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][i] == 'X') {
+                if (checkHorizontalLineIsUnique(board, i) || checkVerticalLineISUnique(board, i)) {
+                    result = true;
+                    break;
+                }
+            }
         }
         return result;
     }

@@ -60,4 +60,43 @@ public class MatrixCheckTest {
         char[] expect = {'X', 'X', 'X'};
         assertThat(MatrixCheck.extractDiagonal(input), is(expect));
     }
+
+    @Test
+    public void whenDataMonoVertical() {
+        char[][] input = {
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+        };
+        boolean result = MatrixCheck.isWin(input);
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void whenDataNotMonoVertical() {
+        char[][] input = {
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', 'X', ' ', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+        };
+        boolean result = MatrixCheck.isWin(input);
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenDataMonoHorizontal() {
+        char[][] input = {
+                {' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' '},
+                {'X', 'X', 'X', 'X', 'X'},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+        };
+        boolean result = MatrixCheck.isWin(input);
+        assertThat(result, is(true));
+    }
 }
