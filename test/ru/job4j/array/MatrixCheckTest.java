@@ -28,4 +28,25 @@ public class MatrixCheckTest {
 
         assertThat(MatrixCheck.checkHorizontalLineIsUnique(input, 1), is(false));
     }
+
+    @Test
+    public void whenHasMonoVertical() {
+        char[][] input = {
+                {' ', ' ', 'X'},
+                {' ', 'S', 'X'},
+                {' ', ' ', 'X'}
+        };
+        assertThat(MatrixCheck.checkVerticalLineISUnique(input, 2), is(true));
+    }
+
+    @Test
+    public void whenDoesNotHaveMonoVertical() {
+        char[][] input = {
+                {' ', ' ', 'X'},
+                {' ', 'S', 'X'},
+                {' ', ' ', 'X'},
+                {' ', ' ', 'S'}
+        };
+        assertThat(MatrixCheck.checkVerticalLineISUnique(input, 2), is(false));
+    }
 }
