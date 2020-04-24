@@ -1,8 +1,7 @@
 package ru.job4j.array;
 
 /**
- * MatrixCheck - is used to check either horizontal or vertical line in multidimensional array
- * and determine if it is filled with the same char;
+ * MatrixCheck - is used to extract and check for similarity data from multidimensional array;
  *
  * @author mankokolya;
  */
@@ -37,6 +36,19 @@ public class MatrixCheck {
                 result = false;
                 break;
             }
+        }
+        return result;
+    }
+
+    /**
+     * This method is used to extract chars from matrix diagonal and save them in the array;
+     * @param board - provided matrix;
+     * @return - array with chars from diagonal;
+     */
+    public static char[] extractDiagonal(char[][] board) {
+        char[] result = new char[board.length];
+        for (int i = 0; i < board.length; i++) {
+            result[i] = board[i][i];
         }
         return result;
     }

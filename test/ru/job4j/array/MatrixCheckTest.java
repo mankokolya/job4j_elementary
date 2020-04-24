@@ -49,4 +49,15 @@ public class MatrixCheckTest {
         };
         assertThat(MatrixCheck.checkVerticalLineISUnique(input, 2), is(false));
     }
+
+    @Test
+    public void extractDiagonalToArrayTrue() {
+        char[][] input = {
+                {'X', ' ', ' '},
+                {' ', 'X', ' '},
+                {' ', ' ', 'X'}
+        };
+        char[] expect = {'X', 'X', 'X'};
+        assertThat(MatrixCheck.extractDiagonal(input), is(expect));
+    }
 }
