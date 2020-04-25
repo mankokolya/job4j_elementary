@@ -13,9 +13,8 @@ public class MatrixCheck {
      */
     public static boolean checkHorizontalLineIsUnique(char[][] board, int row) {
         boolean result = true;
-        char itemToCheck = board[row][0];
-        for (int i = 1; i < board[row].length; i++) {
-            if (board[row][i] != itemToCheck) {
+        for (int i = 0; i < board.length; i++) {
+            if (board[row][i] != 'X') {
                 result = false;
                 break;
             }
@@ -30,9 +29,8 @@ public class MatrixCheck {
      */
     public static boolean checkVerticalLineISUnique(char[][] board, int column) {
         boolean result = true;
-        char itemToCheck = board[0][column];
         for (char[] chars : board) {
-            if (chars[column] != itemToCheck) {
+            if (chars[column] != 'X') {
                 result = false;
                 break;
             }
