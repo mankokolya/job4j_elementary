@@ -11,7 +11,7 @@ public class MatrixCheck {
      * @param row   - row which you have to check;
      * @return - either true if the horizontal line contains only the same char or false if it doesn't;
      */
-    public static boolean checkHorizontalLineIsUnique(char[][] board, int row) {
+    public static boolean checkHorizontalLineHasOnlyX(char[][] board, int row) {
         boolean result = true;
         for (int i = 0; i < board.length; i++) {
             if (board[row][i] != 'X') {
@@ -21,13 +21,12 @@ public class MatrixCheck {
         }
         return result;
     }
-
     /**
      * @param board  - provided multidimensional array;
      * @param column - column in the array which has to be checked;
      * @return - either true if the vertical line contains only the same char or false if it doesn't;
      */
-    public static boolean checkVerticalLineISUnique(char[][] board, int column) {
+    public static boolean checkVerticalLineHasOnlyX(char[][] board, int column) {
         boolean result = true;
         for (char[] chars : board) {
             if (chars[column] != 'X') {
@@ -37,7 +36,6 @@ public class MatrixCheck {
         }
         return result;
     }
-
     /**
      * This method is used to extract chars from matrix diagonal and save them in the array;
      *
@@ -56,7 +54,7 @@ public class MatrixCheck {
         boolean result = false;
         for (int i = 0; i < board.length; i++) {
             if (board[i][i] == 'X') {
-                if (checkHorizontalLineIsUnique(board, i) || checkVerticalLineISUnique(board, i)) {
+                if (checkHorizontalLineHasOnlyX(board, i) || checkVerticalLineHasOnlyX(board, i)) {
                     result = true;
                     break;
                 }

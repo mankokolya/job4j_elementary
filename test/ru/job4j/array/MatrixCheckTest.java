@@ -15,7 +15,7 @@ public class MatrixCheckTest {
                 {' ', ' ', ' '}
         };
 
-        assertThat(MatrixCheck.checkHorizontalLineIsUnique(input, 1), is(true));
+        assertThat(MatrixCheck.checkHorizontalLineHasOnlyX(input, 1), is(true));
     }
 
     @Test
@@ -26,7 +26,7 @@ public class MatrixCheckTest {
                 {' ', ' ', ' '}
         };
 
-        assertThat(MatrixCheck.checkHorizontalLineIsUnique(input, 1), is(false));
+        assertThat(MatrixCheck.checkHorizontalLineHasOnlyX(input, 1), is(false));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class MatrixCheckTest {
                 {' ', 'S', 'X'},
                 {' ', ' ', 'X'}
         };
-        assertThat(MatrixCheck.checkVerticalLineISUnique(input, 2), is(true));
+        assertThat(MatrixCheck.checkVerticalLineHasOnlyX(input, 2), is(true));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class MatrixCheckTest {
                 {' ', ' ', 'X'},
                 {' ', ' ', 'S'}
         };
-        assertThat(MatrixCheck.checkVerticalLineISUnique(input, 2), is(false));
+        assertThat(MatrixCheck.checkVerticalLineHasOnlyX(input, 2), is(false));
     }
 
     @Test

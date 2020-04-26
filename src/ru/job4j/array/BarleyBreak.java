@@ -16,7 +16,6 @@ public class BarleyBreak {
                 number++;
             }
         }
-
         for (int[] numb : data) {
             for (int value : numb) {
                 System.out.print(value);

@@ -12,7 +12,6 @@ public class Fit {
     public static void main(String[] args) {
         double manIdealWeight = Fit.manWeight(180);
         System.out.println("Ideal weight of 180 centimeters tall man is " + manIdealWeight + " kilograms.");
-
         double womanIdealWeight = Fit.womanWeight(160);
         System.out.println("Ideal weight of 160 centimeters tall woman is " + womanIdealWeight + " kilograms.");
 
