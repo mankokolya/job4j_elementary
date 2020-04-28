@@ -1,26 +1,29 @@
 package ru.job4j.converter;
 
-public class Converter {
+/**
+ *  Converter - used to convert ruble to dollar and ruble to euro
+ *
+ * @author mankokolya
+ */
 
+public class Converter {
+    /**
+     *
+     * rubleToEuro - is used to convert certain amount of rubles to euros according to the exchange course
+     * @param value - amount of money to convert;
+     * @return - amount of euros we get after changing ruble to euro;
+     */
     public static int rubleToEuro(int value) {
         return value / 70;
     }
 
+    /**
+     * rubleToDollar - is used to convert certain amount of rubles to dollars according to the exchange course
+     *
+     * @param value- amount of money to convert;
+     * @return - amount of dollars we get after changing ruble to euro;
+     */
     public static int rubleToDollar(int value) {
         return value / 60;
-    }
-
-    public static void main(String[] args) {
-        int rubleToEuroInputValue = 140;
-        int euroExpectedValue = 2;
-        int euroConverted = Converter.rubleToEuro(rubleToEuroInputValue);
-        boolean rubleToEuro = euroExpectedValue == euroConverted;
-        System.out.println("140 rubles are 2 euros. Test result: " + rubleToEuro);
-
-        int rubleToDollarInputValue = 200;
-        int dollarsExpectedValue = 3;
-        int dollarsConverted = Converter.rubleToDollar(rubleToDollarInputValue);
-        boolean rubleToDollar = dollarsExpectedValue == dollarsConverted;
-        System.out.println("200 rubles are 3 dollars. Test result: " +  rubleToDollar);
     }
 }
