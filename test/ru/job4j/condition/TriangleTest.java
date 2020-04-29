@@ -9,13 +9,19 @@ public class TriangleTest {
 
     @Test
     public void whenExist() {
-        boolean result = Triangle.exist(2.0, 2.0, 2.0);
-        assertThat(result, is(true));
+        Point a = new Point(0, 0);
+        Point b = new Point(0, 2);
+        Point c = new Point(2, 0);
+        Triangle triangle = new Triangle(a, b, c);
+        assertEquals(triangle.area(), 1.73, 0.01);
     }
 
     @Test
     public void whenNotExist() {
-        boolean result = Triangle.exist(1.0, 1.0, 3.0);
-        assertThat(result, is(false));
+        Point a = new Point(1, 0);
+        Point b = new Point(1, 0);
+        Point c = new Point(3, 0);
+        Triangle triangle = new Triangle(a, b, c);
+        assertThat(triangle.area(), is(-1.0));
     }
 }
