@@ -19,8 +19,8 @@ public class Triangle {
      * @param bc - distance between point b and c;
      * @return - perimeter;
      */
-    public double perimeter(double ab, double ac, double bc) {
-        return ab + ac + bc;
+    public double halfPerimeter(double ab, double ac, double bc) {
+        return (ab + ac + bc) / 2;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Triangle {
         double ab = this.a.distance(this.b);
         double ac = this.a.distance(this.c);
         double bc = this.b.distance(this.a);
-        double halfPerimeter = perimeter(ab, ac, bc) / 2;
+        double halfPerimeter = halfPerimeter(ab, ac, bc);
         if (this.exist(ab, ac, bc)) {
             result = Math.sqrt(halfPerimeter * (halfPerimeter - ab) * (halfPerimeter - ac) * (halfPerimeter - bc));
         }
