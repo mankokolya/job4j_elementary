@@ -77,13 +77,12 @@ public class Tracker {
      * @return - the task you are looking for if it is not in the tracker then null is returned;
      */
     public Item findById(String id) {
-       int index = indexOf(id);
-       return index != -1 ? items[index] : null;
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
     }
 
     /**
-     *
-     * @param id - identification number of the task you are looking for in the tracker;
+     * @param id   - identification number of the task you are looking for in the tracker;
      * @param item - new task you want to replace the old one with provided id;
      * @return - if id is found in tracker we return true, else false;
      */
@@ -99,7 +98,6 @@ public class Tracker {
     }
 
     /**
-     *
      * @param id - identification number of the task you are looking for in the tracker;
      * @return - index of task in array;
      */
@@ -112,5 +110,17 @@ public class Tracker {
             }
         }
         return result;
+    }
+
+    public boolean delete(String id) {
+        int index = indexOf(id);
+        if (index != -1) {
+            items[index] = null;
+            System.arraycopy(items, index + 1, items, index, position - index);
+            items[position - 1] = null;
+            position--;
+            return true;
+        }
+        return false;
     }
 }
