@@ -88,13 +88,12 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         int index = indexOf(id);
-
-        if (index != -1) {
+        boolean result =  index != -1;
+        if (result) {
             item.setId(items[index].getId());
             items[index] = item;
-            return true;
         }
-        return false;
+        return result;
     }
 
     /**
@@ -114,13 +113,13 @@ public class Tracker {
 
     public boolean delete(String id) {
         int index = indexOf(id);
-        if (index != -1) {
+        boolean result = index != -1;
+        if (result) {
             items[index] = null;
             System.arraycopy(items, index + 1, items, index, position - index);
             items[position - 1] = null;
             position--;
-            return true;
         }
-        return false;
+        return result;
     }
 }
