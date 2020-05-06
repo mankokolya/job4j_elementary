@@ -41,6 +41,7 @@ public class Tracker {
 
     /**
      * This method finds all tasks included in tracker;
+     *
      * @return - array of tasks in tracker without empty cells;
      */
     public Item[] findAll() {
@@ -55,7 +56,6 @@ public class Tracker {
     }
 
     /**
-     *
      * @param name - name of the task you are looking for;
      * @return - - array of all tasks in tracker with the same name without empty cells;
      */
@@ -73,18 +73,44 @@ public class Tracker {
     }
 
     /**
-     *
      * @param id - identification number of the task you are looking for in the tracker;
      * @return - the task you are looking for if it is not in the tracker then null is returned;
      */
     public Item findById(String id) {
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] != null) {
-                if (this.items[i].getId().equals(id)) {
-                    return this.items[i];
-                }
+       int index = indexOf(id);
+       return index != -1 ? items[index] : null;
+    }
+
+    /**
+     *
+     * @param id - identification number of the task you are looking for in the tracker;
+     * @param item - new task you want to replace the old one with provided id;
+     * @return - if id is found in tracker we return true, else false;
+     */
+    public boolean replace(String id, Item item) {
+        int index = indexOf(id);
+
+        if (index != -1) {
+            item.setId(items[index].getId());
+            items[index] = item;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     *
+     * @param id - identification number of the task you are looking for in the tracker;
+     * @return - index of task in array;
+     */
+    private int indexOf(String id) {
+        int result = -1;
+        for (int i = 0; i < position; i++) {
+            if (this.items[i].getId().equals(id)) {
+                result = i;
+                break;
             }
         }
-        return null;
+        return result;
     }
 }

@@ -83,4 +83,15 @@ public class TrackerTest {
         tracker.add(item5);
         assertNull(tracker.findById("25681475689"));
     }
+
+    @Test
+    public void whenReplace() {
+        Tracker tracker = new Tracker();
+        Item bug = new Item("Bug");
+        tracker.add(bug);
+        String id = bug.getId();
+        Item bugWithDesc = new Item("Bug with description");
+        tracker.replace(id, bugWithDesc);
+        assertThat(tracker.findById(id).getName(), is("Bug with description"));
+    }
 }
