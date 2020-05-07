@@ -18,3 +18,7 @@ target
 
 out
 *.log
+/src/ru/job4j/polymorphism/DbStore.java
+/src/ru/job4j/polymorphism/FileStore.java
+/src/ru/job4j/polymorphism/Service.java
+/src/ru/job4j/polymorphism/Store.java
