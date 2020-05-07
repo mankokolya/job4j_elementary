@@ -45,14 +45,7 @@ public class Tracker {
      * @return - array of tasks in tracker without empty cells;
      */
     public Item[] findAll() {
-        Item[] itemsWithoutNull = new Item[this.items.length];
-        int size = 0;
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] != null) {
-                itemsWithoutNull[size++] = this.items[i];
-            }
-        }
-        return Arrays.copyOf(itemsWithoutNull, size);
+        return Arrays.copyOf(items, position);
     }
 
     /**
@@ -60,9 +53,9 @@ public class Tracker {
      * @return - - array of all tasks in tracker with the same name without empty cells;
      */
     public Item[] findByName(String name) {
-        Item[] itemsByName = new Item[this.items.length];
+        Item[] itemsByName = new Item[position];
         int size = 0;
-        for (int i = 0; i < this.items.length; i++) {
+        for (int i = 0; i < position; i++) {
             if (this.items[i] != null) {
                 if (this.items[i].getName().equals(name)) {
                     itemsByName[size++] = this.items[i];
