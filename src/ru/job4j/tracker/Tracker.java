@@ -77,7 +77,7 @@ public class Tracker {
     /**
      * @param id   - identification number of the task you are looking for in the tracker;
      * @param item - new task you want to replace the old one with provided id;
-     * @return - if id is found in tracker we return true, else false;
+     * @return - if id is found in tracker we replace the item with the new one;
      */
     public boolean replace(String id, Item item) {
         int index = indexOf(id);
