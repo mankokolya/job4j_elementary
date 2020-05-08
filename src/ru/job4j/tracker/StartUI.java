@@ -77,7 +77,6 @@ public class StartUI {
         } else {
             System.out.println("Item with id: " + id + "wasn't found in the tracker.");
         }
-        tracker.delete(id);
     }
 
     public static void replace(Input input, Tracker tracker) {
