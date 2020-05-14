@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import com.sun.source.tree.IfTree;
-
 import java.util.Arrays;
 import java.util.Random;
 
@@ -18,7 +16,7 @@ public class Tracker {
     private int position = 0;
 
     /**
-     * Метод реализующий добавление заявки в хранилище
+     * Метод реализующий добавление заявки в хранилище;
      *
      * @param item новая заявка
      */
