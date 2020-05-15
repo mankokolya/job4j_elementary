@@ -23,7 +23,7 @@ public class Player {
         System.out.println("It's " + name + "'s turn.");
         System.out.println("Please enter a number from 1 to 3: ");
         int move = Integer.parseInt(input.nextLine());
-        while(move <= 0 || move > 3) {
+        while (move <= 0 || move > 3) {
             System.out.println("Illegal move!");
             System.out.println("Please enter a number from 1 to 3");
             move = Integer.parseInt(input.nextLine());

@@ -15,7 +15,7 @@ public class MagicBall {
 
     private static String prediction(int choice) {
         String answer;
-        switch (choice){
+        switch (choice) {
             case 0:
                 answer = "Yes";
                 break;

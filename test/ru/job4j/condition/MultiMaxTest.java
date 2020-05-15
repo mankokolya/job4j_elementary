@@ -29,8 +29,8 @@ public class MultiMaxTest {
     }
 
     @Test
-    public void allEqual(){
-        result = check.max(2,2,2);
+    public void allEqual() {
+        result = check.max(2, 2, 2);
         assertThat(result, is(2));
     }
 

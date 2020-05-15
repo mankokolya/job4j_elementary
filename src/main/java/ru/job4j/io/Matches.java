@@ -7,7 +7,7 @@ public class Matches {
         Player firstPlayer = new Player(setName());
         Player secondPlayer = new Player(setName());
         int matches = 11;
-        while(matches > 0) {
+        while (matches > 0) {
             System.out.println("Welcome to the game!!!");
             matches = firstPlayer.makeMove(matches, firstPlayer.getName());
             checkWinner(matches, firstPlayer.getName());
