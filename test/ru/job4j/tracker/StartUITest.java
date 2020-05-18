@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
-
+    private Tracker tracker = new Tracker();
     private StubAction[] actions = createStubActionList();
 
     @Test
@@ -56,6 +56,36 @@ public class StartUITest {
         StableInput input = new StableInput(new String[]{"6"});
         new StartUI().init(input, new Tracker(), actions);
         assertThat(actions[6].isCall(), is(true));
+    }
+
+    @Test
+    public void addItem() {
+        Input input  = new StableInput(new String[]{"Fix PC"});
+        new CreateAction().execute(input, tracker);
+        Item created = tracker.findAll()[0];
+        Item expected = new Item("Fix PC");
+        assertThat(created.getName(), is(expected.getName()));
+    }
+
+
+    @Test
+    public void whenReplaceItem() {
+        Item item = new Item("new item");
+        tracker.add(item);
+        String[] answers = {item.getId(), "replaced item"};
+        new ReplaceItem().execute(new StableInput(answers), tracker);
+        Item replaced = tracker.findById(item.getId());
+        assertThat(replaced.getName(), is("replaced item"));
+    }
+
+    @Test
+    public void whenDeleteItem() {
+        Item item = new Item("Car");
+        tracker.add(item);
+        String[] answers = {item.getId()};
+        new DeleteItem().execute(new StableInput(answers), tracker);
+        Item deleted = tracker.findById(item.getId());
+        assertNull(deleted);
     }
 
 
