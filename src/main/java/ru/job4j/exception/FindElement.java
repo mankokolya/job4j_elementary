@@ -12,11 +12,26 @@ public class FindElement {
         throw new ElementNotFoundException("Element - \"" + key + "\" was not found in the array");
     }
 
-    public static void main(String[] args) {
+    public static boolean sent(String value, String[] abuses) throws ElementAbuseException {
+        for (String abuse : abuses) {
+            if (abuse.equals(value)) {
+                throw new ElementAbuseException("The key: " + value + "is abused");
+            }
+        }
+        return true;
+    }
+
+    public static void process(String[] values, String key, String[] abuses) {
         try {
-            System.out.println(FindElement.indexOf(new String[] {"HELLO", "JAVA", "World"}, "Exception"));
-        } catch (ElementNotFoundException e) {
+            if (indexOf(values, key) != -1) {
+                sent(key, abuses);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        process(new String[]{"HELLO", "JAVA", "World"}, "Exception", new String[]{"John", "Pizza"});
     }
 }
