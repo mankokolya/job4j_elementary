@@ -2,6 +2,10 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.StringJoiner;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
@@ -60,7 +64,7 @@ public class StartUITest {
 
     @Test
     public void addItem() {
-        Input input  = new StableInput(new String[]{"Fix PC"});
+        Input input = new StableInput(new String[]{"Fix PC"});
         new CreateAction().execute(input, tracker);
         Item created = tracker.findAll()[0];
         Item expected = new Item("Fix PC");
@@ -86,6 +90,22 @@ public class StartUITest {
         new DeleteItem().execute(new StableInput(answers), tracker);
         Item deleted = tracker.findById(item.getId());
         assertNull(deleted);
+    }
+
+    @Test
+    public void whenShowMenu() {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream def = System.out;
+        System.setOut(new PrintStream(out));
+        StableInput input = new StableInput(new String[]{"0"});
+        StubAction action = new StubAction("Create an Item");
+        new StartUI().init(input, new Tracker(), new UserAction[] {action});
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("Menu.")
+                .add("0. Create an Item")
+                .toString();
+        assertThat(new String(out.toByteArray()), is(expect));
+        System.setOut(def);
     }
 
 
