@@ -34,11 +34,12 @@ public class ValidateInput implements Input {
         do {
             try {
                 value = input.askInt(question, max);
+//                invalid = false;
+            } catch (IllegalStateException moe) {
+                System.out.println("Please select key from menu.");
                 invalid = false;
             } catch (NumberFormatException nfe) {
                 System.out.println("Please enter a valid data again");
-            } catch (IllegalArgumentException moe) {
-                System.out.println("Please select key from menu.");
             }
         } while (invalid);
         return value;
