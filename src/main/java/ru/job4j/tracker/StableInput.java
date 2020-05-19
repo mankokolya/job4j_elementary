@@ -20,6 +20,11 @@ public class StableInput implements Input {
 
     @Override
     public int askInt(String question, int max) {
-        return askInt(question);
+        int select = askInt(question);
+        if (select >= 0 && select < max) {
+            return select;
+        } else {
+            throw new IllegalArgumentException(String.format("Your choice %s is out of range > [0, %s]", select, max));
+        }
     }
 }
