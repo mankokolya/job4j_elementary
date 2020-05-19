@@ -17,4 +17,9 @@ public class StableInput implements Input {
     public int askInt(String question) {
         return Integer.parseInt(askStr(question));
     }
+
+    @Override
+    public int askInt(String question, int max) {
+        return askInt(question);
+    }
 }
