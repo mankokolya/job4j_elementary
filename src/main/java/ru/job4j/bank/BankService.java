@@ -6,9 +6,7 @@ public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        if (!this.users.containsKey(user)) {
-            this.users.put(user, new ArrayList<>());
-        }
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
@@ -34,12 +32,30 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
+        try {
+            User user = findByPassport(passport);
+            List<Account> userAccounts = this.users.get(user);
+            for (Account account : userAccounts) {
+                if (account.getRequisite().equals(requisite)) {
+                    return account;
+                }
+            }
+        } catch (NullPointerException e) {
+            System.out.println("User with passport " + passport + " was not found in the system.");
+        }
         return null;
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
+        Account sourceAccount = findByRequisite(srcPassport, srcRequisite);
+        Account destAccount = findByRequisite(destPassport, destRequisite);
         boolean result = false;
+        if (sourceAccount != null && sourceAccount.getBalance() >= amount) {
+            destAccount.setBalance(destAccount.getBalance() + amount);
+            sourceAccount.setBalance(sourceAccount.getBalance() - amount);
+            result = true;
+        }
         return result;
     }
 }
