@@ -88,14 +88,15 @@ public class Tracker {
      * @return - index of task in array;
      */
     private int indexOf(String id) {
-        int result = -1;
+        int caseNotFound = -1;
+        int index = 0;
         for (Item item : this.items) {
             if (item.getId().equals(id)) {
-                result = this.items.indexOf(item);
-                break;
+                return index;
             }
+            index++;
         }
-        return result;
+        return caseNotFound;
     }
 
     public boolean delete(String id) {
