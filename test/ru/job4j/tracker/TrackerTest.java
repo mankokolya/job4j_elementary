@@ -11,14 +11,14 @@ import static org.junit.Assert.*;
 
 public class TrackerTest {
     private Tracker tracker = new Tracker();
+    private Item item1 = new Item("item1");
+    private Item item2 = new Item("item2");
+    private Item item3 = new Item("item3");
+    private Item item4 = new Item("item4");
+    private Item item5 = new Item("item5");
 
     @Test
-    public void whenSortAscendingOrder() {
-        Item item1 = new Item("item1");
-        Item item2 = new Item("item2");
-        Item item3 = new Item("item3");
-        Item item4 = new Item("item4");
-        Item item5 = new Item("item5");
+    public void whenSortAscendingOrderByName() {
         List<Item> input = Arrays.asList(item2, item1, item4, item3, item5);
         List<Item> expected = Arrays.asList(item1, item2, item3, item4, item5);
         Collections.sort(input);
@@ -26,12 +26,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenSortDescendingOrder() {
-        Item item1 = new Item("item1");
-        Item item2 = new Item("item2");
-        Item item3 = new Item("item3");
-        Item item4 = new Item("item4");
-        Item item5 = new Item("item5");
+    public void whenSortDescendingOrderByName() {
         List<Item> input = Arrays.asList(item2, item1, item4, item3, item5);
         List<Item> expected = Arrays.asList(item5, item4, item3, item2, item1);
         Collections.sort(input, Collections.reverseOrder());
@@ -40,16 +35,11 @@ public class TrackerTest {
 
     @Test
     public void whenSortAscendingOrderById() {
-        Item item1 = new Item("item1");
-        Item item2 = new Item("item2");
-        Item item3 = new Item("item3");
-        Item item4 = new Item("item4");
-        Item item5 = new Item("item5");
-        item1.setId("6");
-        item2.setId("7");
-        item3.setId("8");
-        item4.setId("9");
-        item5.setId("10");
+        item1.setId("5");
+        item2.setId("6");
+        item3.setId("7");
+        item4.setId("8");
+        item5.setId("9");
         List<Item> input = Arrays.asList(item2, item1, item4, item3, item5);
         List<Item> expected = List.of(item1, item2, item3, item4, item5);
         Collections.sort(input, new CompareItemById());
@@ -58,16 +48,11 @@ public class TrackerTest {
 
     @Test
     public void whenSortDescendingOrderById() {
-        Item item1 = new Item("item1");
-        Item item2 = new Item("item2");
-        Item item3 = new Item("item3");
-        Item item4 = new Item("item4");
-        Item item5 = new Item("item5");
-        item1.setId("6");
-        item2.setId("7");
-        item3.setId("8");
-        item4.setId("9");
-        item5.setId("10");
+        item1.setId("5");
+        item2.setId("6");
+        item3.setId("7");
+        item4.setId("8");
+        item5.setId("9");
         List<Item> input = Arrays.asList(item2, item1, item4, item3, item5);
         List<Item> expected = Arrays.asList(item5, item4, item3, item2, item1);
         Comparator comparator = Collections.reverseOrder(new CompareItemById());
@@ -85,33 +70,18 @@ public class TrackerTest {
 
     @Test
     public void findAll() {
-        Item item1 = new Item("item1");
-        Item item2 = new Item("item2");
-        Item item3 = new Item("item3");
-        Item item4 = new Item("item4");
-        Item item5 = new Item("item5");
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
         tracker.add(item4);
         tracker.add(item5);
         List<Item> result = tracker.findAll();
-        List<Item> expect = new ArrayList<>();
-        expect.add(item1);
-        expect.add(item2);
-        expect.add(item3);
-        expect.add(item4);
-        expect.add(item5);
+        List<Item> expect = List.of(item1, item2, item3, item4, item5);
         assertThat(result, is(expect));
     }
 
     @Test
     public void findByName() {
-        Item item1 = new Item("item1");
-        Item item2 = new Item("item2");
-        Item item3 = new Item("item3");
-        Item item4 = new Item("item4");
-        Item item5 = new Item("item5");
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
@@ -123,14 +93,8 @@ public class TrackerTest {
         assertThat(result, is(expect));
     }
 
-
     @Test
     public void findById() {
-        Item item1 = new Item("item1");
-        Item item2 = new Item("item2");
-        Item item3 = new Item("item3");
-        Item item4 = new Item("item4");
-        Item item5 = new Item("item5");
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
@@ -141,11 +105,6 @@ public class TrackerTest {
 
     @Test
     public void findByIdWhenNotIncluded() {
-        Item item1 = new Item("item1");
-        Item item2 = new Item("item2");
-        Item item3 = new Item("item3");
-        Item item4 = new Item("item4");
-        Item item5 = new Item("item5");
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
