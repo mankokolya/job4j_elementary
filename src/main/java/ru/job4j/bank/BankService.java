@@ -12,13 +12,9 @@ public class BankService {
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         List<Account> userAccount = this.users.get(user);
-        try {
-            if (!userAccount.contains(account)) {
-                userAccount.add(account);
-                this.users.put(user, userAccount);
-            }
-        } catch (NullPointerException e) {
-            System.out.println("User with passport " + passport + " was not found in the system.");
+        if (user != null && !userAccount.contains(account)) {
+            userAccount.add(account);
+            this.users.put(user, userAccount);
         }
     }
 
@@ -32,16 +28,14 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        try {
-            User user = findByPassport(passport);
-            List<Account> userAccounts = this.users.get(user);
+        User user = findByPassport(passport);
+        List<Account> userAccounts = this.users.get(user);
+        if (user != null && userAccounts.size() > 0) {
             for (Account account : userAccounts) {
                 if (account.getRequisite().equals(requisite)) {
                     return account;
                 }
             }
-        } catch (NullPointerException e) {
-            System.out.println("User with passport " + passport + " was not found in the system.");
         }
         return null;
     }
@@ -51,7 +45,7 @@ public class BankService {
         Account sourceAccount = findByRequisite(srcPassport, srcRequisite);
         Account destAccount = findByRequisite(destPassport, destRequisite);
         boolean result = false;
-        if (sourceAccount != null && sourceAccount.getBalance() >= amount) {
+        if (sourceAccount != null && destAccount != null && sourceAccount.getBalance() >= amount) {
             destAccount.setBalance(destAccount.getBalance() + amount);
             sourceAccount.setBalance(sourceAccount.getBalance() - amount);
             result = true;
