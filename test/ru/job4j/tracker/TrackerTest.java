@@ -29,34 +29,7 @@ public class TrackerTest {
     public void whenSortDescendingOrderByName() {
         List<Item> input = Arrays.asList(item2, item1, item4, item3, item5);
         List<Item> expected = Arrays.asList(item5, item4, item3, item2, item1);
-        Collections.sort(input, Collections.reverseOrder());
-        assertEquals(input, expected);
-    }
-
-    @Test
-    public void whenSortAscendingOrderById() {
-        item1.setId("5");
-        item2.setId("6");
-        item3.setId("7");
-        item4.setId("8");
-        item5.setId("9");
-        List<Item> input = Arrays.asList(item2, item1, item4, item3, item5);
-        List<Item> expected = List.of(item1, item2, item3, item4, item5);
-        Collections.sort(input, new CompareItemById());
-        assertEquals(expected, input);
-    }
-
-    @Test
-    public void whenSortDescendingOrderById() {
-        item1.setId("5");
-        item2.setId("6");
-        item3.setId("7");
-        item4.setId("8");
-        item5.setId("9");
-        List<Item> input = Arrays.asList(item2, item1, item4, item3, item5);
-        List<Item> expected = Arrays.asList(item5, item4, item3, item2, item1);
-        Comparator comparator = Collections.reverseOrder(new CompareItemById());
-        Collections.sort(input, comparator);
+        Collections.sort(input, new CompareItemByNameDescendant());
         assertEquals(input, expected);
     }
 
