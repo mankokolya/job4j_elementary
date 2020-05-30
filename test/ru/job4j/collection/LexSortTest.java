@@ -23,43 +23,4 @@ public class LexSortTest {
         Arrays.sort(input, new LexSort());
         assertThat(input, is(out));
     }
-
-    @Test
-    public void sortNum() {
-        String[] input = {
-                "2.1. Task.",
-                "1.2 Task.",
-                "2.2. Task.",
-                "1.3 Task."
-        };
-        String[] out = {
-                "1.2 Task.",
-                "1.3 Task.",
-                "2.1. Task.",
-                "2.2. Task."
-        };
-        Arrays.sort(input, new LexSort());
-        assertThat(input, is(out));
-    }
-    @Test
-
-    public void sortMultiLevel() {
-        String[] input = {
-                "2.1. Task.",
-                "1.2 Task.",
-                "2.2. Task.",
-                "2.2.3 Task.",
-                "1.3 Task."
-        };
-        String[] out = {
-                "1.2 Task.",
-                "1.3 Task.",
-                "2.1. Task.",
-                "2.2. Task.",
-                "2.2.3 Task.",
-        };
-        Arrays.sort(input, new LexSort());
-        assertThat(input, is(out));
-    }
-
 }
