@@ -45,4 +45,13 @@ public class DepartmentsTest {
         Departments.sortDesc(result);
         assertEquals(expect, result);
     }
+
+    @Test
+    public void sortDesc2() {
+        List<String> input = Arrays.asList("j1/sj1/ssj1", "j2/sj1");
+        List<String> expect = Arrays.asList("j2", "j2/sj1", "j1", "j1/sj1", "j1/sj1/ssj1");
+        List<String> result = Departments.fillGaps(input);
+        Departments.sortDesc(result);
+        assertEquals(expect, result);
+    }
 }
