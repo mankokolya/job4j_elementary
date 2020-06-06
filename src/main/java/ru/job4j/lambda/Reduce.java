@@ -1,6 +1,7 @@
 package ru.job4j.lambda;
 
 import java.util.function.*;
+
 public class Reduce {
 
     private static int loop(int to, BiFunction<Integer, Integer, Integer> func, Supplier<Integer> initValue) {
@@ -12,14 +13,14 @@ public class Reduce {
     }
 
     public static int summation(int to) {
-        BiFunction<Integer, Integer, Integer> func = new BinaryOperator<Integer>() {
+        BiFunction<Integer, Integer, Integer> func = new BinaryOperator<>() {
             @Override
             public Integer apply(Integer integer, Integer integer2) {
                 return integer + integer2;
             }
         };
 
-        Supplier<Integer> initValue = new Supplier<Integer>() {
+        Supplier<Integer> initValue = new Supplier<>() {
             @Override
             public Integer get() {
                 return 0;
@@ -29,14 +30,14 @@ public class Reduce {
     }
 
     public static int multiplication(int to) {
-        BiFunction<Integer, Integer, Integer> func = new BinaryOperator<Integer>() {
+        BiFunction<Integer, Integer, Integer> func = new BinaryOperator<>() {
             @Override
             public Integer apply(Integer integer, Integer integer2) {
                 return integer * integer2;
             }
         };
 
-        Supplier<Integer> iniValue = new Supplier<Integer>() {
+        Supplier<Integer> iniValue = new Supplier<>() {
             @Override
             public Integer get() {
                 return 1;

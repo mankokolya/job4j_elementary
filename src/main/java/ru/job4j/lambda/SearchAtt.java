@@ -14,7 +14,7 @@ public class SearchAtt {
                 return attachment.getSize() > 100;
             }
         };
-        return filter(attachments,func);
+        return filter(attachments, func);
     }
 
     public static List<Attachment> filterName(List<Attachment> attachments) {
@@ -24,7 +24,7 @@ public class SearchAtt {
                 return attachment.getName().contains("bug");
             }
         };
-        return filter(attachments,func);
+        return filter(attachments, func);
     }
 
     public static List<Attachment> filter(List<Attachment> list, Predicate<Attachment> predict) {
