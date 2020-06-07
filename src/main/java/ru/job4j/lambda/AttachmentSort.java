@@ -12,24 +12,19 @@ public class AttachmentSort {
                 new Attachment("image 3", 13)
         );
 
-        Comparator<Attachment> comparator = new Comparator<>() {
-            @Override
-            public int compare(Attachment o1, Attachment o2) {
-                return o1.getSize() - o2.getSize();
-            }
-        };
+        Comparator<Attachment> comparator = (o1, o2) -> o1.getSize() - o2.getSize();
 
         attachments.sort(comparator);
         System.out.println(attachments);
 
-        Comparator<Attachment> nameComparator = new Comparator<>() {
-            @Override
-            public int compare(Attachment o1, Attachment o2) {
-                return o1.getName().compareTo(o2.getName());
-            }
-        };
+        Comparator<Attachment> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
 
         attachments.sort(nameComparator);
         System.out.println(attachments);
+
+        Comparator<String> cmpDescSize = (left, right) -> {
+            System.out.println("String descending order compare - " + right.length() + " : " + left.length());
+            return right.length() - left.length();
+        };
     }
 }
