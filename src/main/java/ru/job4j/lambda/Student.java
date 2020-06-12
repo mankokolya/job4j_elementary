@@ -12,4 +12,8 @@ public class Student {
     public int getScore() {
         return score;
     }
+
+    public String getSurname() {
+        return surname;
+    }
 }

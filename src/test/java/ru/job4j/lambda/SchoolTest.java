@@ -2,7 +2,9 @@ package ru.job4j.lambda;
 
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -36,6 +38,19 @@ public class SchoolTest {
         List<Student> expect = List.of(anna, ashley);
         List<Student> result = School.collect(students,
                 student -> student.getScore() > 0 && student.getScore() < 50);
+        assertEquals(expect, result);
+    }
+
+    @Test
+    public void whenListToMap() {
+        Map<String, Student> expect = new HashMap<>();
+        expect.put("John", john);
+        expect.put("Ben", ben);
+        expect.put("Anna", anna);
+        expect.put("Ira", ira);
+        expect.put("Bill", bill);
+        expect.put("Ashley", ashley);
+        Map<String, Student> result = School.mapStudents(students);
         assertEquals(expect, result);
     }
 }
