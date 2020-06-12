@@ -50,7 +50,8 @@ public class SchoolTest {
         expect.put("Ira", ira);
         expect.put("Bill", bill);
         expect.put("Ashley", ashley);
-        Map<String, Student> result = School.mapStudents(students);
+        List<Student> studentsDuplicate = List.of(john, ben, anna, ira, bill, ashley, bill, john);
+        Map<String, Student> result = School.mapStudents(studentsDuplicate);
         assertEquals(expect, result);
     }
 }
