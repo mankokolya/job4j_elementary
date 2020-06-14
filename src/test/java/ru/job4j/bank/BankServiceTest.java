@@ -22,7 +22,7 @@ public class BankServiceTest {
         BankService bank = new BankService();
         bank.addUser(user);
         bank.addAccount(user.getUsername(), new Account("5546", 150D));
-        assertNull(bank.findByRequisite("34", "5546"));
+        assertEquals(Optional.empty(), bank.findByRequisite("34", "5546"));
     }
 
     @Test
