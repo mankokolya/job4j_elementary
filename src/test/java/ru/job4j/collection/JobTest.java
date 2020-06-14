@@ -60,16 +60,16 @@ public class JobTest {
         comparator = new JobAscendByName().thenComparing(new JobAscendByPriority());
         List<Job> jobs = Arrays.asList(job1, job3, job2);
         Collections.sort(jobs, comparator);
-        List<Job> jobsExpected = Arrays.asList(job3, job2, job1);
+        List<Job> jobsExpected = List.of(job3, job2, job1);
         assertEquals(jobsExpected, jobs);
     }
 
     @Test
     public void whenDescComparatorByNameAndPriority() {
-       comparator = new JobDescByName().thenComparing(new JobDescByPriority());
+        comparator = new JobDescByName().thenComparing(new JobDescByPriority());
         List<Job> jobs = Arrays.asList(job1, job3, job2);
         Collections.sort(jobs, comparator);
-        List<Job> jobsExpected = Arrays.asList(job1, job2, job3);
+        List<Job> jobsExpected = List.of(job1, job2, job3);
         assertEquals(jobsExpected, jobs);
     }
 
@@ -78,7 +78,7 @@ public class JobTest {
         comparator = new JobAscendByPriority().thenComparing(new JobAscendByName());
         List<Job> jobs = Arrays.asList(job1, job3, job2);
         Collections.sort(jobs, comparator);
-        List<Job> jobsExpected = Arrays.asList(job3, job1, job2);
+        List<Job> jobsExpected = List.of(job3, job1, job2);
         assertEquals(jobsExpected, jobs);
     }
 
@@ -87,7 +87,7 @@ public class JobTest {
         comparator = new JobDescByPriority().thenComparing(new JobDescByName());
         List<Job> jobs = Arrays.asList(job1, job3, job2);
         Collections.sort(jobs, comparator);
-        List<Job> jobsExpected = Arrays.asList(job2, job1, job3);
+        List<Job> jobsExpected = List.of(job2, job1, job3);
         assertEquals(jobsExpected, jobs);
     }
 }
